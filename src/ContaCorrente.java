@@ -21,9 +21,18 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
-    void transferir(double valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'transferir'");
+    void transferir(double valor, Conta conta) {
+        if(this.saldo < valor){
+            System.out.println("Não é possível sacar esse valor");
+        } else{
+            saldo -= valor;
+            conta.depositar(valor);
+        }
+    }
+
+    @Override
+    void exibirSaldo() {
+        System.out.println("O seu saldo atual é de: R$"+getSaldo());
     }
 
 }

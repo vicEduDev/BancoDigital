@@ -7,7 +7,7 @@ public class ContaPoupanca extends Conta{
     }
 
     @Override
-    double sacar(double valor) {
+    void sacar(double valor) {
         if(this.saldo < valor){
             System.out.println("Não é possível sacar esse valor");
         } else{
@@ -21,8 +21,17 @@ public class ContaPoupanca extends Conta{
     }
 
     @Override
-    void transferir() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'transferir'");
+    void transferir(double valor, Conta conta) {
+        if(this.saldo < valor){
+            System.out.println("Não é possível sacar esse valor");
+        } else{
+            saldo -= valor;
+            conta.depositar(valor);
+        }
+    }
+
+    @Override
+    void exibirSaldo() {
+        System.out.println("O seu saldo atual é de: R$"+getSaldo());
     }
 }
